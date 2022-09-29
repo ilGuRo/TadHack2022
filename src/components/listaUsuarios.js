@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {useNavigate} from 'react-router-dom'
-import UserSavings from "../pages/UserSavings";
+import UserContext from "../context/User/UserContext";
 
 const Usuarios = () => {
-  const [usuarios, setUsuario] = useState([]);
+
+  const {users, getUsers, getSelectedUsers } = useContext(UserContext)
 
   useEffect(() => {
-    obtenerDatos();
+     getUsers();
+     console.log(users);
   }, []);
-
-  const url = "http://localhost:3001/users";
-  const obtenerDatos = async () => {
-    const response = await fetch(url);
-    const users = await response.json();
-    console.log(users);
-    setUsuario(users);
-  };
 
 
   const navigate = useNavigate();
-  const ruta = (user) => {
-    //UserSavings(user)
+  const ruta = async(user) => {
+    await console.log(user);
     navigate(`/ahorro-usuario`)
-    console.log(user);
   }
 
   return (
@@ -38,9 +31,9 @@ const Usuarios = () => {
           </tr>
         </thead>
         <tbody>
-          {usuarios.map((usuario) => {
+          {users.map((usuario) => {
             return (
-            <tr key={usuario.id} onClick={() =>{ruta(usuario)}} >
+            <tr key={usuario.id} onClick={() =>{ruta(getSelectedUsers(usuario))}} >
               <th scope="row">{usuario.documento} </th>
               <td>{usuario.nombres} </td>
               <td>{usuario.apellidos} </td>
