@@ -14,9 +14,17 @@ const UserSavings = (props) => {
   return (
     <div className="container">
       
-      <h1 className="text-center">Abono ahorro mensual</h1>
+      <h1 className="text-center">Ahorro Mensual</h1>
       <hr size="2px"/>
-      <h3 className="text-center"> {selectedUser.nombres} {selectedUser.apellidos} </h3>
+      <div className="row justify-content-between">
+        <div className="col-auto mr-auto">
+          <h3 className="text-center"> {selectedUser.nombres} {selectedUser.apellidos} </h3>
+        </div>
+        <div className="col-auto">
+          <button class="btn btn-primary" type="submit">Añadir ahorro</button>
+        </div>
+      </div>
+      <hr size="2px"/>
       <table className="table table-hover ">
         <thead>
           <tr>
