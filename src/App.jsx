@@ -1,21 +1,25 @@
 import "./App.css";
+
 import { Route, Routes } from "react-router-dom";
-import Usuario from "./components/listaUsuarios.js";
+import Call from "./components/Call"
+import { Profile } from './components/Profile.js'
+import LoginButton from "./components/Login.js"
+import {LogoutButton}  from "./components/Logout.js";
 import Navbar from "./components/Navbar";
-import CreateUser from "./pages/CreateUser";
-import UserSavings from "./pages/UserSavings";
 import UserState from "./context/User/UserState";
 
 function App() {
   return (
+    
     <UserState>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Usuario />} />
-        <Route path="/nuevo-usuario" element={<CreateUser />} />
-        <Route path="/ahorro-usuario" element={<UserSavings />} />
+        <Route path="/" element={<LoginButton />} />
+        <Route path="/" element={<LogoutButton/>}/>
+        <Route path="/call" element={<Call />} />
       </Routes>
     </UserState>
+  
   );
 }
 
