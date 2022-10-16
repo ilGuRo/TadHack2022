@@ -1,22 +1,34 @@
 import "./App.css";
-
+import { useAuth0 } from "@auth0/auth0-react";
 import { Route, Routes } from "react-router-dom";
 import Call from "./components/Call"
 import { Profile } from './components/Profile.js'
 import LoginButton from "./components/Login.js"
-import {LogoutButton}  from "./components/Logout.js";
 import Navbar from "./components/Navbar";
 import UserState from "./context/User/UserState";
+import Main from "./pages/Main";
+import AlternIndex from "./pages/AlternIndex"
+import NavbarLogged from "./components/NavbarLogged"
 
 function App() {
+  const {isAuthenticated} = useAuth0();
+  console.log(isAuthenticated) 
   return (
     
     <UserState>
-      <Navbar />
+      {isAuthenticated ? (
+        <>
+             <NavbarLogged/>
+        </>
+         
+              )  : <Navbar/>}
       <Routes>
-        <Route path="/" element={<LoginButton />} />
-        <Route path="/" element={<LogoutButton/>}/>
+      <Route path="/" element={<AlternIndex />}/>   
+        <Route path="/main" element={<Main/>}/>
         <Route path="/call" element={<Call />} />
+        <Route path="/profile" element={<Profile />} />
+        
+
       </Routes>
     </UserState>
   

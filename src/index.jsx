@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -12,7 +13,7 @@ root.render(
       <Auth0Provider
         domain="dev-f4o1mi2e.us.auth0.com"
         clientId="SnaxqQnEFBnfoQXBJvFz5tDHOe4IgZG9"
-        redirectUri={window.location.origin}
+        redirectUri={window.location.href}
       >
         <App />
       </Auth0Provider>

@@ -49,14 +49,14 @@ function Call() {
     });
 
     engageDigitalClient.addEventHandler('connecting', () => {
-      updateStatus('Connecting to Engage Digital...');
+      updateStatus('Connecting to your personal assistant');
     });
 
     /*
      * This event is being called when connectivity is established for the first time.
      */
     engageDigitalClient.addEventHandler('connected', () => {
-      updateStatus('Connected to Engage Digital');
+      updateStatus('Connected to your personal assistant');
       setcallButtonStatus(true);
       console.log('Your Sip Identity : ' + engageDigitalClient.getUri().toString());
     });
@@ -65,21 +65,21 @@ function Call() {
      * This event is emitted when the Connection with the engage domain is lost
      */
     engageDigitalClient.addEventHandler('disconnected', () => {
-      updateStatus('Disconnected from Engage Digital');
+      updateStatus('Disconnected from your personal assistant');
     });
 
     /*
      * This event is emitted when the sdk tries to re-connect when the already established connection is lost
      */
     engageDigitalClient.addEventHandler('reconnecting', () => {
-      updateStatus('Re-connecting to Engage Digital');
+      updateStatus('Re-connecting to your personal assistant');
     });
 
     /**
      * Fired when the connection is re-established
      */
     engageDigitalClient.addEventHandler('reconnected', () => {
-      updateStatus('Re-connected to Engage Digital');
+      updateStatus('Re-connected toyour personal assistant');
     });
 
     engageDigitalClient.addEventHandler('failed', (error) => {
@@ -327,7 +327,7 @@ function Call() {
           <a href="https://www.radisys.com" rel="noopener noreferrer" target="_blank">
           </a>
 
-          <div className="maintitle">Click-to-Call Demo Application</div>
+          <div className="maintitle"></div>
 
           <div>
             {session?._sessionState !== 'connected' || session === null ? (
@@ -389,7 +389,7 @@ function Call() {
                   opacity: '0.1',
                 }}
               >
-                Local Video
+                You
               </div>
               <video
                 ref={localStreamRef}
@@ -419,7 +419,7 @@ function Call() {
                   opacity: '0.1',
                 }}
               >
-                Remote Video
+                Your assistant
               </div>
               <video
                 ref={remoteStreamRef}
